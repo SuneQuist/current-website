@@ -57,7 +57,7 @@ function runAnimationLoop(el) {
                         index = 0;
                     }, 1000);
                 } else {
-                    el.target.src = `/images/contact/Artboard{index}.png`; 
+                    el.target.src = `/images/contact/Artboard${index}.png`; 
                     index++; 
                 }
             }, 1000/frames);
