@@ -1,0 +1,7 @@
+a=0
+for i in *.png; do
+  new=$(printf "Artboard %d.png" "$a") #04 pad to length of 4
+  echo $new
+  mv -i -- "$new" "Artboard$a.png"
+  let a=a+1
+done

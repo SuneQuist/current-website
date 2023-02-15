@@ -1,0 +1,100 @@
+:root {
+    /*breakpoints*/
+    --bp-small: 24.15;
+    --bp-medium: 43.75;
+    --bp-large: 60.25;
+    --bp-xlarge: 75;
+
+    /*h1 variable*/
+    --h1-font-size-min: 2;
+    --h1-font-size-max: 6;
+
+    /*h2 variable*/
+    --h2-font-size-min: 2;
+    --h2-font-size-max: 4;
+    
+    /*h* variable*/
+    --h-font-size-min: 1;
+    --h-font-size-max: 2;
+
+    /*body variable*/
+    --body-font-size-min: 1;
+    --body-font-size-max: 1.05;
+}
+
+@function calcFontSize($varMin, $varMax) {
+    @return calc(
+        ( var($varMin) * 1em ) + 
+        ( var($varMax) - var($varMin) ) *
+        ( (100vw - ( var(--bp-small) * 1em )) / (var(--bp-xlarge) - var(--bp-small)) )
+    );
+}
+
+h1 {
+    font-family: plex;
+    font-weight: bold;
+    line-height: calc( var(--h1-font-size-min) * 0.5em );
+    letter-spacing: 1.1px;
+    font-size: calc( var(--h1-font-size-min) * 1em );
+}
+
+h2 { 
+    font-family: plex;
+    font-weight: bold;
+    line-height: calc( var(--h2-font-size-min) * 0.45em );
+    letter-spacing: 1px;
+    font-size: calc( var(--h2-font-size-min) * 1em ); 
+}
+
+h3, h4, h5 { 
+    font-family: plex;
+    font-weight: bold;
+    font-style: italic;
+    line-height: calc( var(--h-font-size-min) * 0.45em );
+    letter-spacing: 1px;
+    font-size: calc( var(--h-font-size-min) * 1em ); 
+}
+
+p, q, textArea, input, label { 
+    font-family: plex;
+    font-weight: normal;
+    line-height: 1.35rem;
+    letter-spacing: 1.1px;
+    font-size: calc( var(--body-font-size-min) * 1em ); 
+}
+
+@media screen and (min-width: 24.15em) {
+    h1 { 
+        font-size: calcFontSize(--h1-font-size-min, --h1-font-size-max) 
+    }
+
+    h2 { 
+        font-size: calcFontSize(--h2-font-size-min, --h2-font-size-max) 
+    }
+
+    h3, h4, h5 { 
+        font-size: calcFontSize(--h-font-size-min, --h-font-size-max) 
+    }
+
+    p, q, textArea, input, label { 
+        font-size: calcFontSize(--body-font-size-min, --body-font-size-max) 
+    }
+}
+
+@media screen and (min-width: 75em) {
+    h1 { 
+        font-size: calc( var(--h1-font-size-max) * 1em ); 
+    }
+
+    h2 { 
+        font-size: calc( var(--h2-font-size-max) * 1em ); 
+    }
+
+    h3, h4, h5 { 
+        font-size: calc( var(--h-font-size-max) * 1em ); 
+    }
+
+    p, q, textArea, input, label { 
+        font-size: calc( var(--body-font-size-max) * 1em ); 
+    }
+}

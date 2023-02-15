@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all .25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body {
+    color: rgb(209, 209, 209);
+    background-color: rgb(5, 5, 5);
+}
+
+main {
+    width: 100%;
+}
+
+ul, a {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: exclusion;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    user-select: none;
+    pointer-events: none;
+}
