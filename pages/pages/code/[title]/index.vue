@@ -19,9 +19,9 @@
             <Code v-if="items.type === 'code'" :item="items" />
         </article>
         <section class="back">
-            <a href="/">
+            <NuxtLink to="/">
                 <img src="/titles/back.svg" alt="back" />
-            </a>
+            </NuxtLink>
         </section>
     </div>
 </template>

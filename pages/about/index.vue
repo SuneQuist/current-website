@@ -23,6 +23,18 @@
 
                     I study design and programming, but I love anything I can get my hands on. I'm currently getting diagnosed with Autism and ADD and have a rare disease that occupied my early life (and still does to some extent).<br /><br />
 
+                    I'm a quick learner, not because of talent or anything glorious like that, but because I study so much that I know automatically what to Google to get the answers  I need (at least for the most part).<br /><br />
+
+                    Here's a fun fact: The site was built in Nuxt in two days. Now that isn't really that impressive, but what if I told you I had never used Vue or Nuxt before two days ago? And now I have a fully functional site („• ֊ •„)<br /><br />
+
+                    I often study weird unrelated topics as well, and yeah I try not too, but I just love studying. E.g. here's some random things I studied up on (certs):
+                    <br /><br />
+
+                    <a class="text-container" target="_blank" href="https://courses.edx.org/certificates/2ae3db0a1818423d999f2b1a5b38dcdd">AT1x: Human Anatomy: Musculoskeletal Cases</a>
+                    <br /><br />
+                    <a class="text-container" target="_blank" href="https://courses.edx.org/certificates/e0782228b7ce402f8b304dd869938479">UB1x: Unconscious Bias: From Awareness to Action</a>
+                    <br /><br />
+
                     If you want to talk or reach out, you can contact me at - <a href="mailto:sunevinterhoej@gmail.com">sunevinterhoej@gmail.com</a>
                     </p>
                     </div>
@@ -90,6 +102,21 @@ onNuxtReady(() => { animate(); })
             float: left;
         }
     }
+    
+    .text p .text-container {
+        color: rgb(216, 216, 216);
+        padding-bottom: 0.1rem;
+        border-bottom: 1px solid rgb(216, 216, 216);
+        font-size: 0.75rem;
+        font-family: plex;
+        font-weight: 500;
+        font-style: italic;
+        opacity: 1;
+
+        &:hover, &:active {
+            opacity: 1;
+        }
+    }
 
     .text {
         padding: 3rem 0 5rem 0;
@@ -104,6 +131,12 @@ onNuxtReady(() => { animate(); })
         p {
             padding-top: .25rem;
             column-count: 1;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
 
         a {

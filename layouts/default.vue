@@ -3,9 +3,52 @@
         <slot></slot>
     </main>
     <canvas id="canvas"></canvas>
+    <div class="audio" @click="play()">
+        <img ref="image" :src="icon" alt="play music" />
+    </div>
 </template>
 
-<style>
+<script setup>
+const image = ref();
+let icon = "/audio/audio-off.svg";
+
+let audio;
+
+onNuxtReady(() => { audio = new Audio("/audio/leo.mp3"); });
+
+let player = false;
+function play() {
+    player = !player;
+
+    if (player) {
+        audio.play();
+        audio.volume = 0.25;
+        icon = "/audio/audio-on.svg";
+        image.value.src = icon;
+    } else {
+        audio.pause();
+        audio.volume = 0.25;
+        icon = "/audio/audio-off.svg";
+        image.value.src = icon;
+    }
+}
+
+</script>
+
+<style lang="scss">
+    .audio {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        width: 2.5rem;
+        height: 2.5rem;
+        z-index: 11;
+
+        & > img {
+            width: 100%;
+        }
+    }
+
     .page-left-enter-active,
     .page-right-enter-active,
     .page-left-leave-active,

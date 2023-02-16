@@ -5,7 +5,7 @@
             <img src="/titles/memorylane.svg" alt="title" />
         </div>
         <ul>
-            <li v-for="item in list" class="item">
+            <li v-for="item in list" :key="item" class="item">
                 <a :href="item.src" target="_blank">
                     <img :src="item.thumbnail" :style="{width: size + 'px'}" alt="" />
                     <span>{{ item.title }}</span>
@@ -16,40 +16,7 @@
 </template>
 
 <script setup>
-import gsap from 'gsap';
-
-let lmin = 75;
-let lmax = 100;
-
-const size = ref(Math.floor(Math.random() * (lmax - lmin + 1) + lmin))
-
-onNuxtReady(() => {
-    if (window.innerWidth < (43.75 * 16)) {
-            lmin = 75;
-            lmax = 100;
-
-            size.value = Math.floor(Math.random() * (lmax - lmin + 1) + lmin);
-    } else {
-        lmin = 250;
-        lmax = 300;
-    
-        size.value = Math.floor(Math.random() * (lmax - lmin + 1) + lmin);
-    }
-
-    window.addEventListener("resize", () => {
-        if (window.innerWidth < (43.75 * 16)) {
-            lmin = 75;
-            lmax = 100;
-
-            size.value = Math.floor(Math.random() * (lmax - lmin + 1) + lmin);
-        } else {
-            lmin = 250;
-            lmax = 300;
-    
-            size.value = Math.floor(Math.random() * (lmax - lmin + 1) + lmin);
-        }
-    })
-})
+import {size, bouncing} from "assets/custom/bounce";
 
 const list = [
     {
@@ -87,58 +54,14 @@ const list = [
 const main = ref();
 const ctx = ref();
 
-onMounted(() => {
-    function bouncing() {
-        ctx.value = gsap.context(self => {
-            if (self?.selector) {
-                const items = self.selector(".item");
-                
-                for (let i = 0; i < items.length; i++) {
-                    const storageItem = list[i];
+onNuxtReady(() => {
+    bouncing(main, ctx, {pages: list});
     
-                    if (storageItem.rotate) {
-                        gsap.to(items[i], {rotation: "360", duration:3, ease: "expo", repeat:-1});
-                    }
-    
-                    let x = Math.floor(Math.random() * ((window.innerWidth - (storageItem.size * 4)) - storageItem.size) + storageItem.size);
-        
-                    let y = Math.floor(Math.random() * ((window.innerHeight - (storageItem.size * 4)) - storageItem.size) + storageItem.size);
+    window.addEventListener("resize", bouncing(main, ctx, {pages: list}), true);
+})
 
-                    items[i].style.top = y + "px";
-                    items[i].style.left = x + "px";
-    
-                    requestAnimationFrame(draw);
-                    let vx = Math.ceil(Math.random() * (storageItem.size / 300)) * (Math.round(Math.random()) ? 1 : -1) ;
-    
-                    let vy = Math.ceil(Math.random() * (storageItem.size / 300)) * (Math.round(Math.random()) ? 1 : -1) ;
-    
-                    function draw() {
-                        x += vx;
-                        y += vy;
-    
-                        if (y < 0 || y > window.innerHeight - size.value) {
-                            vy = -vy;
-                        }
-                        
-                        if (x < 0 || x > window.innerWidth - size.value) {
-                            vx = -vx;
-                        }
-    
-                        items[i].style.top = y + "px";
-                        items[i].style.left = x + "px";
-                        requestAnimationFrame(draw);
-                    }
-                }
-            }
-
-        }, main.value)
-    }
-
-    bouncing();
-
-    window.addEventListener("resize", function() {
-        if (size.value) { bouncing(); }
-    });
+onUnmounted(() => {
+    window.removeEventListener("resize", bouncing(main, ctx, {pages: list}), true);
 })
 </script>
 
