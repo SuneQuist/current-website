@@ -40,7 +40,6 @@
 
         p, q, textArea, input, label {
             padding-top: 1rem;
-            opacity: 0.5;
             position: relative;
         }
         

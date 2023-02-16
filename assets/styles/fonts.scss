@@ -58,6 +58,7 @@ h3, h4, h5 {
 p, q, textArea, input, label { 
     font-family: plex;
     font-weight: normal;
+    color: rgb(131, 131, 131);
     line-height: 1.35rem;
     letter-spacing: 1.1px;
     font-size: calc( var(--body-font-size-min) * 1em ); 

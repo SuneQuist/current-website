@@ -21,7 +21,7 @@
 
                     My name is Sune and 21 years old, and I love to study and learn new things.<br /><br />
 
-                    I study design and programming, but I love anything I can get my hands on. I'm currently getting diagnosed with Autism and ADHD (or more likely *ADD) and have a rare disease that occupied my early life (and still does to some extent).<br /><br />
+                    I study design and programming, but I love anything I can get my hands on. I'm currently getting diagnosed with Autism and ADD and have a rare disease that occupied my early life (and still does to some extent).<br /><br />
 
                     If you want to talk or reach out, you can contact me at - <a href="mailto:sunevinterhoej@gmail.com">sunevinterhoej@gmail.com</a>
                     </p>
@@ -69,21 +69,9 @@ function animate() {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     ctx.value = gsap.context(self => {
-
         gsap.timeline(
-            gsap.fromTo(".title-image", {y: 200}, {ease: "expo", duration: 2, y: 0}),
-    
-            ScrollTrigger.create({
-                onEnter: (self) => {
-                    gsap.timeline(
-                        gsap.fromTo(".image-wrapper", 
-                        { y: 200, opacity: 0 }, 
-                        { y: 0, opacity: 1, duration: 2, ease: "expo" })
-                    )
-                },
-            })
+            gsap.fromTo(".title-image", {y: 100}, {ease: "power3", duration: 2, y: 0}),
         )
-
     }, main.value);
 }
 
@@ -92,11 +80,6 @@ onNuxtReady(() => { animate(); })
 </script>
 
 <style lang="scss">
-    .image-wrapper {
-        width: 100%;
-        padding: 1rem;
-    }
-
     .contact {
         width: 100%;
         overflow: hidden;
@@ -124,8 +107,10 @@ onNuxtReady(() => { animate(); })
         }
 
         a {
-            color: rgb(223, 223, 223);
-            border-bottom: 10px solid rgb(223, 223, 223);
+            color: rgb(216, 216, 216);
+            padding-bottom: 0.15rem;
+            font-weight: 500;
+            border-bottom: 10px solid rgb(216, 216, 216);
             opacity: 1;
 
             &:hover, &:active {
@@ -151,7 +136,6 @@ onNuxtReady(() => { animate(); })
 
             p, q, textArea, input, label {
                 padding-top: 1rem;
-                opacity: 0.5;
                 position: relative;
             }
             
@@ -175,6 +159,7 @@ onNuxtReady(() => { animate(); })
             background-repeat: no-repeat;
             background-position: center;
             background-attachment: fixed;
+            -webkit-overflow-scrolling: touch;
             width: 100%;
             height: 100vh;
             padding: 1rem 2rem;
@@ -195,7 +180,7 @@ onNuxtReady(() => { animate(); })
             font-size: 2rem;
         }
     }
-
+    
     .hint {
         height: 100vh;
         background-color: black;

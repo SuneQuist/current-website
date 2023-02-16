@@ -2,9 +2,9 @@
     <div id="content" ref="main" :style="bgImage">
         <Header :position="'fixed'"></Header>
         <ul>
-            <li v-for="item in list" class="item">
+            <li v-for="item in list" class="item" :style="{width: item.size + 'px', height: item.size + 'px'}">
                 <NuxtLink :to="`${item.src}`">
-                    <img :src="item.thumbnail" :style="{width: item.size + 'px'}" alt="" />
+                    <img :src="item.thumbnail" alt="thumbnail" />
                 </NuxtLink>
             </li>
         </ul>
@@ -21,7 +21,7 @@ const ctx = ref();
 
 const bgImage = computed(() => { 
     return {
-        backgroundImage: `url("/images/etc/space-0${Math.floor(Math.random() * (4 - 1 + 1) + 1)}.png")`
+        backgroundImage: `url(${`/images/etc/space-0${Math.floor(Math.random() * (3 - 1 + 1) + 1)}.png` || "/images/programming/cd-01.png"})`
     }
 })
 
@@ -35,7 +35,7 @@ onMounted(() => {
                     const storageItem = $storage?.pages[i];
     
                     if (storageItem.rotate) {
-                        gsap.to(items[i], {rotation: "360", delay: i, duration:3, ease: "linear", repeat:-1});
+                        gsap.to(items[i], {rotation: "360", delay: 0, duration: 3 * (i + 1), ease: "linear", repeat:-1});
                     }
     
                     let x = Math.floor(Math.random() * (window.innerWidth - storageItem.size));
@@ -94,6 +94,10 @@ onMounted(() => {
     .item {
         width: 200px;
         position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
 
         & img {
             width: 100%;

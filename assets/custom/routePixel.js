@@ -17,7 +17,7 @@ export default function () {
     const row = 25;
     const col = 5;
     
-    const colors = ["rgba(43, 15, 255, 1)", "rgba(233, 187, 255, 1)", "rgba(255, 31, 0, 0.7)", "rgba(220, 247, 162, 1)"];
+    const colors = ["rgba(43, 15, 255, 1)", "rgba(233, 187, 255, 1)", "rgba(220, 247, 162, 1)"];
     
     function runAnimation(n) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);

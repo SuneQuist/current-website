@@ -36,9 +36,5 @@
             font-size: 1.25rem;
             opacity: 0.75;
         }
-
-        p, q, textArea, input, label {
-            opacity: 0.5;
-        }
     }
 </style>

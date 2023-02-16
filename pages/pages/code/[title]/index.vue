@@ -10,11 +10,8 @@
         <article class="hero">
             <div class="hero-title start-title" ref="title" v-if="item?.title">
                 <img v-if="item?.svg" ref="thumbnail" :src="/titles/ + size + item?.svg" alt="" />
-                <!-- <h1>{{ item?.title }}</h1> -->
             </div>
-            <div class="hero-image-container start-image" :style="bgImage">
-                <!-- <img v-if="item.thumbnail" :src="item.thumbnail" alt="hero image" /> -->
-            </div>
+            <div class="hero-image-container start-image" :style="bgImage"></div>
         </article>
         <article class="layout wtf" v-for="items in item?.layout">
             <Quote v-if="items.type === 'quote'" :item="items" />
