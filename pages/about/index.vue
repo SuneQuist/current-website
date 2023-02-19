@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="contact">
-                    <img @click="runAnimationLoop" src="/images/contact/Artboard0.png" alt="contact animation" />
+                    <img ref="img" @click="runAnimationLoop" src="/images/contact/Artboard0.png" alt="contact animation" />
                 </div>
         </div>
     </div>
@@ -51,15 +51,14 @@ import {gsap, ScrollTrigger, ScrollToPlugin} from "gsap/all";
 
 const ctx = ref();
 const main = ref();
+const img = ref();
 
 let index = 0;
-let active = false;
+let active = true;
 let timeout;
 let frames = 8;
 function runAnimationLoop(el) {
     onNuxtReady(() => {
-        active = !active;
-    
         clearInterval(timeout);
         
         if (active) {
@@ -74,7 +73,9 @@ function runAnimationLoop(el) {
                 }
             }, 1000/frames);
         }
-    })
+    });
+
+    active = !active;
 }
 
 function animate() {
@@ -87,7 +88,9 @@ function animate() {
     }, main.value);
 }
 
-onNuxtReady(() => { animate(); })
+onMounted(() => { runAnimationLoop(img); });
+
+onNuxtReady(() => {animate(); })
 
 </script>
 

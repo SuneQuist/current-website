@@ -21,31 +21,31 @@ import {size, bouncing} from "assets/custom/bounce";
 const list = [
     {
         title: "Taxi Driver",
-        thumbnail: "/images/thumbnails/arctic-01.png",
+        thumbnail: "/images/gallery/door-05.png",
         size: size.value,
         src: "https://www.behance.net/gallery/163442459/Taxi-Driver-A-lesser-version-of-Dan-Perri"
     },
     {
         title: "Lenius",
-        thumbnail: "/images/thumbnails/arctic-02.png",
+        thumbnail: "/images/gallery/door-02.png",
         size: size.value,
         src: "https://www.behance.net/gallery/163440973/LogoLenius"
     },
     {
         title: "sogl",
-        thumbnail: "/images/thumbnails/beach-01.png",
+        thumbnail: "/images/gallery/door-01.png",
         size: size.value,
         src: "https://www.behance.net/gallery/149712001/Brandsogl"
     },
     {
         title: "Xbox",
-        thumbnail: "/images/thumbnails/beach-03.png",
+        thumbnail: "/images/gallery/door-04.png",
         size: size.value,
         src: "https://www.behance.net/gallery/131144259/XBOX-Controller"
     },
     {
         title: "Shiss",
-        thumbnail: "/images/thumbnails/cliff-02.png",
+        thumbnail: "/images/gallery/door-03.png",
         size: size.value,
         src: "https://www.behance.net/gallery/112015515/Random-shiss"
     },

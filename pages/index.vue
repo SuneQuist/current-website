@@ -26,8 +26,6 @@ const bgImage = computed(() => {
     }
 })
 
-console.log($storage)
-
 onNuxtReady(() => {
     bouncing(main, ctx, $storage);
     

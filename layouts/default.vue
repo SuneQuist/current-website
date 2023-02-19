@@ -17,16 +17,24 @@ let audio;
 onNuxtReady(() => { audio = new Audio("/audio/leo.mp3"); });
 
 let player = false;
+let currentlyAtTime = 0;
 function play() {
     player = !player;
 
     if (player) {
         audio.play();
+        audio.currentTime = currentlyAtTime;
         audio.volume = 0.25;
         icon = "/audio/audio-on.svg";
         image.value.src = icon;
+
+        audio.addEventListener("ended", function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
     } else {
         audio.pause();
+        currentlyAtTime = audio.currentTime;
         audio.volume = 0.25;
         icon = "/audio/audio-off.svg";
         image.value.src = icon;
@@ -38,15 +46,29 @@ function play() {
 <style lang="scss">
     .audio {
         position: fixed;
-        bottom: 10px;
-        right: 10px;
-        width: 2.5rem;
-        height: 2.5rem;
+        bottom: 25px;
+        right: 25px;
+        width: 4rem;
+        height: 4rem;
         z-index: 11;
         cursor: pointer;
+        background-color: black;
+        padding: 1rem;
+        border-radius: 75px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         & > img {
             width: 100%;
+        }
+    }
+    
+    @media screen and (max-width: 43.75em) {
+        .audio {
+            width: 3rem;
+            height: 3rem;
+            padding: 0.75rem;
         }
     }
 
