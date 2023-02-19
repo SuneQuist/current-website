@@ -40,43 +40,19 @@
                     </div>
                 </div>
                 <div class="contact">
-                    <img ref="img" @click="runAnimationLoop" src="/images/contact/Artboard0.png" alt="contact animation" />
+                    <img ref="img" src="/images/contact/Artboard0.png" alt="contact animation" />
                 </div>
         </div>
     </div>
 </template>
 
 <script setup>
+import {runAnimationLoop} from "assets/custom/contact_loop";
 import {gsap, ScrollTrigger, ScrollToPlugin} from "gsap/all";
 
 const ctx = ref();
 const main = ref();
 const img = ref();
-
-let index = 0;
-let active = true;
-let timeout;
-let frames = 8;
-function runAnimationLoop(el) {
-    onNuxtReady(() => {
-        clearInterval(timeout);
-        
-        if (active) {
-            timeout = setInterval(() => { 
-                if (index >= 26) { 
-                    setTimeout(() => {
-                        index = 0;
-                    }, 1000);
-                } else {
-                    el.target.src = `/images/contact/Artboard${index}.png`; 
-                    index++; 
-                }
-            }, 1000/frames);
-        }
-    });
-
-    active = !active;
-}
 
 function animate() {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -88,15 +64,23 @@ function animate() {
     }, main.value);
 }
 
-onMounted(() => { runAnimationLoop(img); });
+onNuxtReady(() => {
+    animate(); 
 
-onNuxtReady(() => {animate(); })
+    // Register handle
+    if (img.value) {runAnimationLoop(img.value)};
+    // Run handle
+    img.value.addEventListener("click", runAnimationLoop);
+});
 
 </script>
 
 <style lang="scss">
     .contact {
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         overflow: hidden;
         cursor: pointer;
 
